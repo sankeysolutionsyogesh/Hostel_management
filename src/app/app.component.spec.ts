@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Hostel_management'`, () => {
+  it(`should have as title 'firebase-connection'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Hostel_management');
+    expect(app.title).toEqual('firebase-connection');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Hostel_management app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('firebase-connection app is running!');
   });
 });
