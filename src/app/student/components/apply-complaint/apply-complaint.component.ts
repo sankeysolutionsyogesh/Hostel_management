@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit , ViewChild,  ElementRef, Renderer2 } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { ComplaintservicesService } from '../../services/complaintservices.service';
+import { StudentmoduleService } from '../../services/studentmodule.service';
 
 @Component({
   selector: 'app-apply-complaint',
@@ -6,5 +12,127 @@ import { Component } from '@angular/core';
   styleUrls: ['./apply-complaint.component.css']
 })
 export class ApplyComplaintComponent {
+  complaintForm: FormGroup;
+  @ViewChild('fileInput') fileInput: ElementRef | undefined;
+  myInfo: any = {}
+  loading = false;
+ 
+  constructor(private formBuilder: FormBuilder, private storage: AngularFireStorage, private applycomplaintservice: ComplaintservicesService, private renderer: Renderer2, private studentservices: StudentmoduleService) {
+    this.complaintForm = this.formBuilder.group({
+      complaintType: ['', Validators.required],
+      severity: ['', Validators.required],
+      incidentLocation: ['', Validators.required],
+      complaint: ['', Validators.required],
+      attachments: [null]
+    });
+  
+    const data = this.studentservices.getLoggedStudentdata()
+    this.myInfo = data[0]
+    console.log("My info - ",this.myInfo)
+  }
 
+
+  uploadImage(form: NgForm) {
+    try {
+      const file = this.complaintForm.value.attachments;
+      console.log("File ", this.complaintForm.value.attachments)
+
+      const filePath = `images/${file.name}`;
+
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+
+      task.then(() => {
+        fileRef.getDownloadURL().subscribe(downloadURL => {
+          console.log("URL ", downloadURL)
+          this.uploadDetails(form, downloadURL)
+          return downloadURL;
+
+
+        });
+      });
+    }
+    catch (Error) {
+      console.log("File ", Error)
+
+    }
+  }
+
+  uploadDetails(form: NgForm, downloadURL = null) {
+    // Handle form submission here
+    console.log('Type of Complaint:', form.value.compType);
+    console.log('Severity Level:', form.value.severity);
+    console.log('Location:', form.value.location);
+    console.log('Relative Name:', form.value.complaint);
+
+    const data = {
+      student_email: this.myInfo.student_email,
+      student_name : this.myInfo.student_name,
+      roomnumber: this.myInfo.room_number,
+      status: "unsolved",
+      type: form.value.compType,
+      severity: form.value.severity,
+      location: form.value.location,
+      complaint: form.value.complaint,
+      fileurl: downloadURL,
+      submitted_at : new Date().toISOString()
+    }
+
+    try {
+      this.applycomplaintservice.applyComplaint(data)
+        .then(() => {
+          console.log('Student registered successfully!');
+          this.loading = false;
+          // this.leaveForm.reset();
+          // this.range.reset();
+          this.resetForm(form)
+        })
+        .catch((error:any) => {
+          console.error('Error registering student:', error);
+        });
+    }
+    catch (err) {
+      console.log("error in post API", err)
+
+    }
+
+
+  }
+
+  onSubmit(form: NgForm) {
+    this.loading = true;
+
+
+    if (this.complaintForm.value.attachments != null) {
+      this.uploadImage(form)
+    } else {
+      this.uploadDetails(form)
+    }
+
+  }
+
+  validateFileFormat(control: any) {
+    if (control.value) {
+      const file = control.value;
+      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+        return { fileFormat: true };
+      }
+    }
+    return null;
+  }
+
+  onFileSelected(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+      this.complaintForm.patchValue({
+        attachments: file
+      });
+    }
+  }
+
+  resetForm(form: NgForm) {
+    form.resetForm(); 
+    this.renderer.setProperty(this.fileInput?.nativeElement, 'value', '');
+  }
 }

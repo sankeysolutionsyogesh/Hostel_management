@@ -1,1 +1,4 @@
-<app-table-with-actions [dataSource]="yourDataSource" [displayedColumns]="yourDisplayedColumns" [actionButtons]="studentlistActionButtons"></app-table-with-actions>
+<button mat-raised-button class="add-button" color="primary" type="submit" (click)="addStudent()" class="add-button">Add
+    Student</button>
+<app-table-with-actions [dataSource]="yourDataSource" [displayedColumns]="yourDisplayedColumns"
+    [actionButtons]="studentlistActionButtons"></app-table-with-actions>

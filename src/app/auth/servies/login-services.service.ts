@@ -73,4 +73,13 @@ export class LoginServicesService {
   }
 
 
+  logout() {
+    console.log("kdsufhk")
+    localStorage.clear();
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('LoginInfo');
+    // localStorage.removeItem('role');
+    this.router.navigate(['./auth/login']);
+  }
+
 }

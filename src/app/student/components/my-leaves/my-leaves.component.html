@@ -1,1 +1,21 @@
-<p>my-leaves works!</p>
+<div class="container">
+    <ng-container *ngIf="loading; else showContent" class="content">
+        <h1>Loading ...</h1>
+    </ng-container>
+
+    <ng-template #showContent>
+        <!-- Check if array length is 0 and loading is false -->
+        <ng-container *ngIf="!loading && myLeaves.length === 0">
+            <h1>No leaves found</h1>
+        </ng-container>
+
+        <!-- If there are leaves in the array -->
+        <ng-container *ngIf="myLeaves.length > 0">
+            <!-- Loop through the leaveInfoArray and display each leave item -->
+            <div *ngFor="let leaveInfo of myLeaves">
+
+                <app-table-with-actions [dataSource]="yourDataSource" [displayedColumns]="yourDisplayedColumns" [actionButtons]="leavesActionButtons" ></app-table-with-actions>
+            </div>
+        </ng-container>
+    </ng-template>
+</div>

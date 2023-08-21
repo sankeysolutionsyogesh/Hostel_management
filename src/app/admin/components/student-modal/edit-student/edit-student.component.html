@@ -1,0 +1,6 @@
+<div class="modal-container">
+    <h2 class="title">Edit Student Details of {{data.sid}}</h2>
+    <app-admin-student-forms [StudentDetails]="data" PageName="editpage"
+        (notifyParent)="onNoClick($event)"></app-admin-student-forms>
+
+</div>

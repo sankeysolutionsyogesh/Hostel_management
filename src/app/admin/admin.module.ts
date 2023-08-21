@@ -18,6 +18,10 @@ import { AStudentCompliantComponent } from './components/student-modal/a-student
 import { AStudentLeavesComponent } from './components/student-modal/a-student-leaves/a-student-leaves.component';
 import { AStudentListComponent } from './components/student-modal/a-student-list/a-student-list.component';
 import { DatePipe } from '@angular/common';
+import { AddStudentsComponent } from './components/student-modal/add-students/add-students.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditStudentComponent } from './components/student-modal/edit-student/edit-student.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -29,7 +33,9 @@ import { DatePipe } from '@angular/common';
     AdminHomepageComponent,
     AStudentCompliantComponent,
     AStudentLeavesComponent,
-    AStudentListComponent
+    AStudentListComponent,
+    AddStudentsComponent,
+    EditStudentComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +49,8 @@ import { DatePipe } from '@angular/common';
     MatDividerModule,
     FormsModule,
     MatInputModule,
+    MatDialogModule,
+    MatButtonModule
 
   ],
   providers: [DatePipe],

@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { UnauthorisedComponent } from './components/unauthorised/unauthorised.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     RegisterComponent,
     AuthComponent,
+    PagenotfoundComponent,
+    UnauthorisedComponent,
 
   ],
   imports: [

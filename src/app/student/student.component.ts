@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentmoduleService } from './services/studentmodule.service';
 
 @Component({
   selector: 'app-student',
@@ -7,21 +8,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent {
-  constructor(private router: Router, private route: ActivatedRoute) {
-    console.log("In student")
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('email');
-      if (id !== null) {
-        console.log("id - ", id)
-        // this.id = parseInt(id);
-        // this.leaveservices.getSingleLeaves(this.id).subscribe((data): any => {
-        //   console.log("Leaves", data[0])
-        //   this.leaveInfo = data[0]
-        //   this.loading = false
-        // });
-      }
-      // this.id = parseInt(id)
-      // Now you can use the 'id' in your component
-    });
+  pagesRoutes = [
+    { label: 'Home', link: './student-home' },
+    { label: 'My Leaves', link: './student-leaves' },
+    { label: 'Apply Leaves', link: './student-apply-leaves' },
+    { label: 'Apply Complaint', link: './student-apply-complaint' },
+  ];
+
+  loading: boolean = true;
+  role: string = "Auth"
+  myInfo: any = {}
+
+
+  constructor(private studentservices: StudentmoduleService, private router: Router, private route: ActivatedRoute) {
+    
+    const data = this.studentservices.getLoggedStudentdata()
+    console.log("My data", data[0])
+    this.myInfo = data[0]
+    this.loading = false;
+
   }
 }

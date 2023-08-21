@@ -15,9 +15,9 @@ export class AdminmoduleservicesService {
 
   checkAdminExists(role: string) :any{
     const LoginDetails = this.getLoginInfo()
-
-    if (LoginDetails.token) {
-      if (LoginDetails.role === role) {
+    
+    if (LoginDetails?.token) {
+      if (LoginDetails?.role === role) {
         console.log("Admin as successfully logged")
         return true
       } else {
