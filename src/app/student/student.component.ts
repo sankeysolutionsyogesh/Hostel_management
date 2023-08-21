@@ -21,11 +21,19 @@ export class StudentComponent {
 
 
   constructor(private studentservices: StudentmoduleService, private router: Router, private route: ActivatedRoute) {
-    
-    const data = this.studentservices.getLoggedStudentdata()
-    console.log("My data", data[0])
-    this.myInfo = data[0]
-    this.loading = false;
 
+    // const data = this.studentservices.getLoggedStudentdata()
+    // console.log("My data", data)
+    // this.myInfo = data[0]
+    // this.loading = false;
+
+
+  }
+
+  ngDoCheck() {
+    const data = this.studentservices.getLoggedStudentdata()
+    console.log("My data", data)
+    this.myInfo = data
+    this.loading = false;
   }
 }

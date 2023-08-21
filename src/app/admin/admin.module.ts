@@ -22,6 +22,10 @@ import { AddStudentsComponent } from './components/student-modal/add-students/ad
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditStudentComponent } from './components/student-modal/edit-student/edit-student.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ViewSingleCompliantComponent } from './components/student-modal/view-single-compliant/view-single-compliant.component';
+import { ViewSingleLeaveComponent } from './components/student-modal/view-single-leave/view-single-leave.component';
 
 
 
@@ -35,7 +39,9 @@ import { MatButtonModule } from '@angular/material/button';
     AStudentLeavesComponent,
     AStudentListComponent,
     AddStudentsComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    ViewSingleCompliantComponent,
+    ViewSingleLeaveComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +56,9 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule
 
   ],
   providers: [DatePipe],

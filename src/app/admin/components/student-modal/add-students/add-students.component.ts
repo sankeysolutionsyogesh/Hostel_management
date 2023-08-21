@@ -23,5 +23,7 @@ export class AddStudentsComponent {
     console.log("Return data", Outputdata)
     this.dialogRef.close();
   }
-
+  goBack(){
+    this.dialogRef.close();
+  }
 }

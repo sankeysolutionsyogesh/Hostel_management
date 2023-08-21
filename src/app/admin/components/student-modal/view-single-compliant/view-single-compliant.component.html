@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <span class="close-button" (click)="onNoClick()">&times;</span>
+        </div>
+        <div class="modal-content">
+            <div *ngIf="Complaint.fileurl" class="image-section">
+                <img [src]="Complaint.fileurl" alt="Student Image">
+            </div>
+            <div class="info-section">
+                <div class="info-line complaint-reason">
+                    <span class="info-key">Complaint Reason:</span>
+                    <span class="info-value">{{Complaint.complaint}}</span>
+                </div>
+                <div class="container-two">
+                    <div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint By :</span>
+                            <span class="info-value">{{Complaint.student_email}}</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint Submitted at : </span>
+                            <span class="info-value">{{Complaint.submitted_at | date:'dd/MMM/yyyy'}}</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint Status :</span>
+                            <span class="info-value">{{Complaint.status}}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint severity :</span>
+                            <span class="info-value">{{Complaint.severity}}</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint Type : </span>
+                            <span class="info-value">{{Complaint.type}}</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-key">Complaint Location :</span>
+                            <span class="info-value">{{Complaint.location}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

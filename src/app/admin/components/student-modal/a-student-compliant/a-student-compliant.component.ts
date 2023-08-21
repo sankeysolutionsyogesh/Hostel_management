@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminStudentService } from 'src/app/admin/services/admin-student.service';
 import { DatePipe } from '@angular/common';
+import { ViewSingleCompliantComponent } from '../view-single-compliant/view-single-compliant.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-a-student-compliant',
@@ -12,24 +14,44 @@ export class AStudentCompliantComponent {
   yourDataSource: MatTableDataSource<any>;
   yourDisplayedColumns: string[];
   complaintsActionButtons = [
-    { icon: 'visibility', function: (complaint:any) => this.viewComplaint(complaint) },
+    { icon: 'visibility', function: (complaint: any) => this.viewComplaint(complaint) },
   ];
-  
-  constructor(private studentservice: AdminStudentService, private datePipe: DatePipe) {
+
+
+  allCcomplaints: any = []
+  constructor(private studentservice: AdminStudentService, private datePipe: DatePipe, public dialog: MatDialog) {
     this.yourDataSource = new MatTableDataSource<any>([]);
     this.yourDisplayedColumns = [];
     this.getStudentAction()
   }
 
   viewComplaint(complaint: any) {
-    console.log("Complaint", complaint)
+    const singledata = this.allCcomplaints.filter((item: any) => {
+
+      if (item.complaintId === complaint.complaintId) {
+        return item
+      }
+    })
+
+    console.log("items", singledata)
+    const dialogRef = this.dialog.open(ViewSingleCompliantComponent, {
+      width: '350px',
+      data: singledata[0]
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      // if(result){
+      //   alert(":sdfosdhofh")
+      // }
+    });
   }
 
 
 
   getStudentAction() {
     this.studentservice.GetStudentsComplaints().subscribe(data => {
-      // this.StudentList = data;
+      this.allCcomplaints = data;
       const showColumns = ['complaintId', 'complaint', 'severity', 'type', 'status']
 
       const ArrayData = data.map((item) => {

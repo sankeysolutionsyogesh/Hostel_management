@@ -13,8 +13,10 @@
         <ng-container *ngIf="myLeaves.length > 0">
             <!-- Loop through the leaveInfoArray and display each leave item -->
             <div *ngFor="let leaveInfo of myLeaves">
+                <div class="table-conatiner">
+                    <app-table-with-actions [dataSource]="yourDataSource" [displayedColumns]="yourDisplayedColumns" [actionButtons]="leavesActionButtons" ></app-table-with-actions>
 
-                <app-table-with-actions [dataSource]="yourDataSource" [displayedColumns]="yourDisplayedColumns" [actionButtons]="leavesActionButtons" ></app-table-with-actions>
+                </div>
             </div>
         </ng-container>
     </ng-template>

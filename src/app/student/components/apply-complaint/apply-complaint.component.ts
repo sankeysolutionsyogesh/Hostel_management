@@ -26,8 +26,7 @@ export class ApplyComplaintComponent {
       attachments: [null]
     });
   
-    const data = this.studentservices.getLoggedStudentdata()
-    this.myInfo = data[0]
+    this.myInfo  = this.studentservices.getLoggedStudentdata()
     console.log("My info - ",this.myInfo)
   }
 

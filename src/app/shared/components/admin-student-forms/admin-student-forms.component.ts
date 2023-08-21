@@ -20,6 +20,7 @@ export class AdminStudentFormsComponent {
     selectedDate: ""
   };
   constructor(private studentservice: AdminStudentService) {
+    console.log("Data in modal ", this.StudentDetails)
 
 
   }
@@ -69,9 +70,10 @@ export class AdminStudentFormsComponent {
 
         try {
           this.studentservice.registerStudent(data)
-            .then(() => {
+            .then((result) => {
               console.log('Student registered successfully!');
               form.resetForm();
+              this.notifyParent.emit('Student registered successfully!');
             })
             .catch((error) => {
               console.error('Error registering student:', error);

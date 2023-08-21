@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminStudentService } from 'src/app/admin/services/admin-student.service';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-a-student-leaves',
@@ -16,14 +17,16 @@ export class AStudentLeavesComponent {
     { icon: 'visibility', function: (leaves:any) => this.viewLeaves(leaves) },
   ];
   
-  constructor(private studentservice: AdminStudentService, private datePipe: DatePipe) {
+  constructor(private route: ActivatedRoute,private router: Router,private studentservice: AdminStudentService, private datePipe: DatePipe) {
     this.yourDataSource = new MatTableDataSource<any>([]);
     this.yourDisplayedColumns = [];
     this.getStudentAction()
   }
 
   viewLeaves(leaves: any) {
-    console.log("Complaint", leaves)
+    console.log("leaves", leaves)
+    this.router.navigate(['../a-student-leaves',leaves.leaveId], { relativeTo: this.route });
+
   }
 
   getStudentAction() {

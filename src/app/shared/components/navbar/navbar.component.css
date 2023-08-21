@@ -1,4 +1,5 @@
 .nav-bar-container{
+  display: flex;
     background-color: #0e77f478 !important;
     color: rgb(37, 33, 33); 
   }
@@ -23,3 +24,6 @@
     background-color: #ddd;
   }
   
+  .flex-grow {
+    flex-grow: 1; /* This property makes the element consume available space and grow flexibly */
+  }

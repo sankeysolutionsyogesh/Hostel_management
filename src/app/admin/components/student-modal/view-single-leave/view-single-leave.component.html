@@ -1,0 +1,52 @@
+<div class="letter">
+    <div class="header">
+      <div>
+        <mat-icon class="close-button" (click)="goBack()">arrow_back</mat-icon>
+      </div>
+      <div>
+        <h2>Letter of Approval</h2>
+      </div>
+    </div>
+    <ng-container *ngIf="loading; else showContent" class="content">
+      <h1>Loading ... </h1>
+    </ng-container>
+  
+    <ng-template #showContent>
+  
+      <p><strong>Applied At:</strong> {{ leaveInfo.applied_at | date:'medium' }}</p>
+      <p><strong>Room Number:</strong> {{ leaveInfo.room_number }}</p>
+  
+      <div class="student-info">
+        <p>Student Name: {{ leaveInfo.student_name }}</p>
+        <p>Relative Contact: {{ leaveInfo.relativeContact }}</p>
+        <p>Relative Name: {{ leaveInfo.relativeName }}</p>
+        <p><strong>Reason : </strong> {{ leaveInfo.reason }}</p>
+      </div>
+  
+      <p><strong>Start Date:</strong> {{ formatDateWithDay(leaveInfo.startDate) }}</p>
+      <p><strong>End Date:</strong> {{ formatDateWithDay(leaveInfo.endDate) }}</p>
+      <div class="status-action">
+        <p><strong>Status</strong></p>
+  
+        <select [(ngModel)]="leaveInfo.status" (ngModelChange)="onStatusChange()">
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+  
+      <!-- <mat-slide-toggle [(ngModel)]="leaveInfo.status">
+        {{ leaveInfo.status ? 'Approved' : 'Reject' }}
+    </mat-slide-toggle> -->
+      <!-- <mat-slide-toggle
+    [checked]="leaveInfo.status"
+    (change)="Approval($event.checked)"
+  >
+    {{ leaveInfo.status ? 'Approved' : 'Reject' }}
+  </mat-slide-toggle> -->
+  
+      <div class="footer">
+        <p>For any inquiries, please contact me at {{ leaveInfo.student_email }}</p>
+      </div>
+    </ng-template>
+  </div>

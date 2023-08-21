@@ -1,6 +1,12 @@
 <div class="modal-container">
-    <h2 class="title">Edit Student Details of {{data.sid}}</h2>
+    <div class="title">
+        <div>
+            <h2>Edit Student Details of {{data.sid}}</h2>
+        </div>
+
+        <mat-icon class="back-button" (click)="goBack()">cancel</mat-icon>
+
+    </div>
     <app-admin-student-forms [StudentDetails]="data" PageName="editpage"
         (notifyParent)="onNoClick($event)"></app-admin-student-forms>
-
 </div>

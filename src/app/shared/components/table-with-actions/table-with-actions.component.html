@@ -17,7 +17,7 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="tablesToDisplay"></tr>
+        <tr mat-header-row class="table-header-row" *matHeaderRowDef="tablesToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: tablesToDisplay;"></tr>
     </table>
 </div>

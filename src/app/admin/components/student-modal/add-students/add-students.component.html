@@ -1,5 +1,12 @@
 <div class="modal-container">
-    <h2 class="title">Add new Student</h2>
+    <div class="title">
+        <div>
+            <h2>Add new Student</h2>
+        </div>
+
+        <mat-icon class="back-button" (click)="goBack()">cancel</mat-icon>
+
+    </div>
     <app-admin-student-forms [StudentDetails]="data" PageName="addpage"
         (notifyParent)="onNoClick($event)"></app-admin-student-forms>
 

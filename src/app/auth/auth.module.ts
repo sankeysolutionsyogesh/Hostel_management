@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { UnauthorisedComponent } from './components/unauthorised/unauthorised.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { UnauthorisedComponent } from './components/unauthorised/unauthorised.co
     MatFormFieldModule,
     MatDividerModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class AuthModule { }

@@ -1,0 +1,23 @@
+.modal-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 10%;
+    margin-bottom: 15px;
+}
+
+.back-button {
+    /* margin-right: 10px; */
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+h2 {
+    margin: 0;
+    flex: 1; /* Allow the title to take up remaining space */
+    text-align: center; /* Center the title text */
+}

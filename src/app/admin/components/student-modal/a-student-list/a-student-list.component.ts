@@ -4,6 +4,9 @@ import { AdminStudentService } from 'src/app/admin/services/admin-student.servic
 import { AddStudentsComponent } from '../add-students/add-students.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 @Component({
   selector: 'app-a-student-list',
   templateUrl: './a-student-list.component.html',
@@ -16,7 +19,7 @@ export class AStudentListComponent {
     { icon: 'edit', function: (student: any) => this.viewStudent(student) },
     { icon: 'delete', function: (student: any) => this.deleteStudent(student) },
   ];
-  constructor(private studentservice: AdminStudentService, public dialog: MatDialog) {
+  constructor(private studentservice: AdminStudentService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.yourDataSource = new MatTableDataSource<any>([]);
     this.yourDisplayedColumns = [];
     this.getStudentAction()
@@ -28,9 +31,26 @@ export class AStudentListComponent {
   }
 
   deleteStudent(student: any) {
-    const result = this.studentservice.deleteStudent(student.sid)
-    console.log("Result of delete ", result)
-    this.getStudentAction()
+
+    var userResponse = window.confirm(`Do you want to delete id - ${student.sid}`);
+    if (userResponse) {
+      const result = this.studentservice.deleteStudent(student.sid)
+      console.log("Result of delete ", result)
+      this.getStudentAction()
+      this.snackBar.open('Deletion done succesfully', 'Thanks ', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+    } else {
+      // User clicked "Cancel" (false)
+      console.log("User chose to cancel.");
+      this.snackBar.open('No Deletion', 'Yes', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+    }
    
   }
 
@@ -51,10 +71,26 @@ export class AStudentListComponent {
   }
 
   openEditDialog(InputData: any): void {
+
+    let EditProfile = {}
+
+    if (InputData.gender === 'Male') {
+      EditProfile = {...InputData, gender : 'M'} 
+    } else if (InputData.gender === 'Female') {
+      EditProfile = {...InputData, gender : 'F'} 
+
+    } else {
+      EditProfile = {...InputData, gender : 'O'} 
+
+    }
+    console.log("Diaplog input ", InputData)
+
+
+
     const dialogRef = this.dialog.open(EditStudentComponent, {
       height: 'auto',
       width: '900px',
-      data: InputData,
+      data: EditProfile,
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginServicesService } from '../../servies/login-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent {
   loginError: boolean = false;
   loading: boolean = false;
   // constructor(private snackBar: MatSnackBar, private loginService: LoginDataService, private router: Router) { }
-  constructor(private loginservices : LoginServicesService){
+  constructor(private router: Router,private loginservices : LoginServicesService){
 
   }
   username: string = '';
@@ -38,4 +39,20 @@ export class LoginComponent {
       // });
     }
   }
+
+  ngOnInit(): void {
+
+    const data = this.loginservices.getLoginInfo()
+    console.log("User deatils", data)
+    if (data?.role === 'admin') {
+      this.router.navigate(['admin'])
+    } else if (data?.role === 'student') {
+      this.router.navigate(['student'])
+    } else {
+      console.log("Not logged")
+    }
+    // this.loginService.getAllLogin()
+
+  }
+
 }

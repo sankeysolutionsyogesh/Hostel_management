@@ -24,4 +24,8 @@ export class EditStudentComponent {
     this.dialogRef.close();
   }
 
+  goBack(){
+    this.dialogRef.close();
+  }
+
 }

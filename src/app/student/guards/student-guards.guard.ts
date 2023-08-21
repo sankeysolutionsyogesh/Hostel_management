@@ -7,15 +7,17 @@ export const studentGuardsGuard: CanActivateFn | any = async () => {
   const router = inject(Router)
   const service = inject(StudentmoduleService)
 
-  service.checkStudentData('student').subscribe(
+  const role = 'student'
+  service.checkStudentData(role).subscribe(
     {
       next: (data: any) => {
         console.log("return data ", data)
-        if (data)  return data;
+        if (data) {
+          return true
+        } 
         else {
           router.navigate(['unathorised']);
-          return data
-
+          return false
         }
       },
       error: error => {

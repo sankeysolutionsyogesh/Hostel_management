@@ -30,7 +30,7 @@ export class StudentmoduleService {
 
 
   setLoggedStudentdata(data: any) {
-    localStorage.setItem('myInfo', JSON.stringify(data));
+    localStorage.setItem('myInfo', JSON.stringify(data[0]));
   }
 
   getLoggedStudentdata() {
@@ -120,25 +120,42 @@ export class StudentmoduleService {
   // }
 
   checkStudentData(role: any): Observable<boolean> {
-    const studentsRef = this.db.list('students-list', ref =>
-      ref.orderByChild('student_email').equalTo(this.myInfo.email)
-    );
+    console.log("Role ", role, this.myInfo)
+    if (this.myInfo?.token) {
+      if (role === this.myInfo?.role) {
 
-    return studentsRef.valueChanges().pipe(
-      map((data: any[]) => {
-        if (data?.length > 0) {
-          this.setLoggedStudentdata(data)
-          console.log("Student final info", data);
-          return true;
-        } else {
-          return false;
-        }
-      }),
-      catchError((error) => {
-        return throwError(() => error);
-      })
-    );
+        const studentsRef = this.db.list('students-list', ref =>
+          ref.orderByChild('student_email').equalTo(this.myInfo.email)
+        );
+
+        return studentsRef.valueChanges().pipe(
+          map((data: any[]) => {
+            if (data.length > 0) {
+              console.log("Student final info", data);
+
+              this.setLoggedStudentdata(data)
+              return true;
+            } else {
+
+              console.log("Student doesn't exisits", data);
+
+              return false;
+            }
+          }),
+          catchError((error) => {
+            return throwError(() => error);
+          })
+        );
+
+      } else {
+        return throwError(() => "Error of role doesn't match");
+      }
+    } else {
+      return throwError(() => "Error of token doesn't exisits");
+
+    }
   }
+
 
   // getStudentData(): Observable<any> {
   //   return Observable.create((observer: any) => {

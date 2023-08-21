@@ -9,6 +9,7 @@ import { AdminHomepageComponent } from './components/admin-homepage/admin-homepa
 import { AStudentLeavesComponent } from './components/student-modal/a-student-leaves/a-student-leaves.component';
 import { AStudentCompliantComponent } from './components/student-modal/a-student-compliant/a-student-compliant.component';
 import { AStudentListComponent } from './components/student-modal/a-student-list/a-student-list.component';
+import { ViewSingleLeaveComponent } from './components/student-modal/view-single-leave/view-single-leave.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
           { path: 'a-student-leaves', component: AStudentLeavesComponent },
           { path: 'a-student-complaint', component: AStudentCompliantComponent },
           { path: 'a-student-list', component: AStudentListComponent },
+          { path: 'a-student-leaves/:id', component: ViewSingleLeaveComponent},
 
         ]
       }

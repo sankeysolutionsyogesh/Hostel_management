@@ -103,4 +103,38 @@ export class AdminStudentService {
 
   }
 
+  
+  getSingleLeaves(id: any) {
+    const studentsRef = this.db.list('students-leave', ref =>
+      ref.orderByChild('leaveId').equalTo(id)
+    );
+
+    return studentsRef.valueChanges();
+
+  }
+
+  updateStudentStatus(data:any) {
+    console.log("Upodating", data.leaveId, data.status)
+    const studentsRef = this.db.list('students-leave', ref =>
+      ref.orderByChild('leaveId').equalTo(data.leaveId)
+    );
+
+    studentsRef.snapshotChanges().subscribe((snapshots) => {
+      snapshots.forEach((snapshot) => {
+        const key: any = snapshot.key;
+
+        const updatedData = { status: data.status };
+
+        studentsRef.update(key, updatedData)
+          .then(() => {
+            return { message: "Successfully updated status" };
+          })
+          .catch((error) => {
+            return { message: `Error while updating status - ${error}` };
+          });
+      });
+    });
+
+  }
+
 }

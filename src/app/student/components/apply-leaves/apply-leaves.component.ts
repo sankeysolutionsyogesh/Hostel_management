@@ -20,8 +20,7 @@ export class ApplyLeavesComponent {
   disabled: boolean = true;
   constructor(private studentservices: StudentmoduleService, private fb: FormBuilder, private applyleaveservice: LeavesservicesService) {
 
-    const data = this.studentservices.getLoggedStudentdata()
-    this.myInfo = data[0]
+    this.myInfo  = this.studentservices.getLoggedStudentdata()
     console.log("My info - ", this.myInfo)
     const createdDate = new Date(this.myInfo.created_at);
     this.minimumValidDate = createdDate;

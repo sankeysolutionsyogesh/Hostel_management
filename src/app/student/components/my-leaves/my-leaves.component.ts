@@ -64,7 +64,7 @@ export class MyLeavesComponent {
         next: (data: any) => {
           if (data.length > 0) {
             console.log("Leaves", data)
-            // this.myLeaves = data
+            this.myLeaves = data
             this.createLeavesTable(data)
             this.loading = false;
             return true
@@ -83,7 +83,7 @@ export class MyLeavesComponent {
   getStudentData(): Observable<any> {
     return Observable.create((observer: any) => {
       const myInfo = this.studentservices.getLoggedStudentdata()
-      observer.next(myInfo[0]);
+      observer.next(myInfo);
       observer.complete();
     });
 

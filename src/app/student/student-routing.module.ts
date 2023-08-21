@@ -15,8 +15,6 @@ const routes: Routes = [
       { path: 'student-leaves', component: MyLeavesComponent },
       { path: 'student-apply-complaint', component: ApplyComplaintComponent },
       { path: 'student-apply-leaves', component: ApplyLeavesComponent },
-
-
     ]
   }
 ];
