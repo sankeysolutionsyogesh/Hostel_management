@@ -1,8 +1,17 @@
 <div *ngIf="!loading else loaderShow">
-    <div>
+    <!-- <div>
         <app-navbar [titlename]="this.myInfo?.student_name || 'Student'"  [role]="role" [pagesRoutes]="pagesRoutes"></app-navbar>
     </div>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet> -->
+    <div>
+        <app-navbar *ngIf="isDesktop" [titlename]="this.myInfo?.student_name || 'Student'" [role]="role" [pagesRoutes]="pagesRoutes">
+            <router-outlet></router-outlet>
+        </app-navbar>
+        <app-sidebar *ngIf="isMobile" [titlename]="this.myInfo?.student_name || 'Student'" [role]="role" [pagesRoutes]="pagesRoutes">
+            <router-outlet></router-outlet>
+        </app-sidebar>
+    </div>
+
 </div>
 <ng-template #loaderShow class="custom-spinner-container">
     <div class="conatiner">

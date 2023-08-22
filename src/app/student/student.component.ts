@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentmoduleService } from './services/studentmodule.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-student',
@@ -19,8 +21,11 @@ export class StudentComponent {
   role: string = "Auth"
   myInfo: any = {}
 
+  isDesktop: boolean = true;
+  isMobile: boolean = false;
 
-  constructor(private studentservices: StudentmoduleService, private router: Router, private route: ActivatedRoute) {
+
+  constructor(private breakpointObserver: BreakpointObserver,private studentservices: StudentmoduleService, private router: Router, private route: ActivatedRoute) {
 
     // const data = this.studentservices.getLoggedStudentdata()
     // console.log("My data", data)
@@ -28,6 +33,23 @@ export class StudentComponent {
     // this.loading = false;
 
 
+  }
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe(['(min-width: 500px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          console.log('Viewport width is 500px or greater!');
+          this.isDesktop = true
+          this.isMobile = false
+        } else {
+          console.log('Viewport width is less than 500px!');
+          this.isMobile = true
+          this.isDesktop = false
+
+        }
+      });
   }
 
   ngDoCheck() {

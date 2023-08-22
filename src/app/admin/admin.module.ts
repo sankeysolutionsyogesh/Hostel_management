@@ -26,7 +26,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ViewSingleCompliantComponent } from './components/student-modal/view-single-compliant/view-single-compliant.component';
 import { ViewSingleLeaveComponent } from './components/student-modal/view-single-leave/view-single-leave.component';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar'; // Import the MatToolbarModule
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -58,7 +60,10 @@ import { ViewSingleLeaveComponent } from './components/student-modal/view-single
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    LayoutModule
 
   ],
   providers: [DatePipe],

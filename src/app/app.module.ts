@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment.development';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // import { FormsModule } from '@angular/forms';
 // import { HttpClientModule } from '@angular/common/http';
@@ -49,7 +50,8 @@ import { AdminModule } from './admin/admin.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     StudentModule,
-    AdminModule
+    AdminModule,
+    LayoutModule
     // AuthModule,
     // BrowserAnimationsModule,
     // AngularFireAuthModule,

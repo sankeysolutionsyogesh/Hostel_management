@@ -1,9 +1,22 @@
 .table-conatiner {
-    padding-left: 20px;
-    padding-right: 20px;
+  padding: 20px;
+  overflow-x: auto;
 }
 
-.table-header-row{
-    font-weight: bold;
-    text-transform: uppercase;
+table {
+ 
+  width: 100%;
+}
+
+
+.table-header-row {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+
+  
 }

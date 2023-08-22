@@ -25,5 +25,7 @@
   }
   
   .flex-grow {
-    flex-grow: 1; /* This property makes the element consume available space and grow flexibly */
+    flex-grow: 1;
   }
+
+ 

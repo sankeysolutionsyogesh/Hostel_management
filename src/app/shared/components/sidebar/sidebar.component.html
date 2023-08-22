@@ -1,0 +1,47 @@
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer mode="push" opened="false" class="sidenavs" #sidenav>
+    <!-- <mat-toolbar class="nav-bar-container">
+     
+      <div class="flex-grow"></div>
+    </mat-toolbar> -->
+    <div class="drawer-container">
+      <!-- Title at the top -->
+      <div class="title">
+        <h2>Hello, {{titlename}}</h2>
+      </div>
+      
+      <!-- Nav-bar in the middle -->
+      <div class="nav-bar">
+        <a
+          (click)="sidenav.toggle()"
+          *ngFor="let route of pagesRoutes"
+          [routerLink]="route.link"
+          [routerLinkActive]="'active-link'" 
+        >
+          {{ route.label }}
+        </a>
+      </div>
+      
+      <div class="flex-grow"></div>
+      <!-- Bottom section at the bottom -->
+      <div class="bottom" (click)="logout()">
+        <h2>Logout</h2>
+        <button *ngIf="titlename !== 'Guest'" mat-icon-button class="example-icon logout-icon" aria-label="Logout"
+          >
+           <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+    </div>
+    
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

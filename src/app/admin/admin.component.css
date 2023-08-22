@@ -1,0 +1,66 @@
+/* Styles for the sidenav container */
+.sidenav-container {
+    height: 100vh; /* Make the sidenav container take up the full viewport height */
+    display: flex;
+  }
+  
+  /* Styles for the sidenav */
+  .sidenav {
+    width: 250px; /* Set the initial width of the sidenav */
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  /* Styles for the navigation links in the sidenav */
+  .sidenav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+  
+  .sidenav a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Styles for the main content area */
+  .mat-sidenav-content {
+    flex: 1; /* Make the content area expand to fill available space */
+    padding: 20px;
+  }
+  
+  /* Styles for the toolbar */
+  .nav-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Styles for the menu button icon */
+  .example-icon {
+    color: #fff;
+  }
+  
+  /* Styles for the logout button icon */
+  .logout-icon {
+    color: #fff;
+    margin-left: 20px;
+  }
+  
+  /* Media query for responsive adjustments */
+  @media screen and (max-width: 768px) {
+    /* Reduce the sidenav width for smaller screens */
+    .sidenav {
+      width: 150px;
+    }
+  
+    /* Hide the title on smaller screens */
+    .nav-bar-container h2 {
+      display: none;
+    }
+  }
+  

@@ -13,13 +13,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     TableWithActionsComponent,
-    AdminStudentFormsComponent
+    AdminStudentFormsComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -32,12 +35,17 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    LayoutModule
+
+
   ],
   exports:[
     NavbarComponent,
     TableWithActionsComponent,
-    AdminStudentFormsComponent
+    AdminStudentFormsComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,7 @@
 <div class="container">
 
     <form class="leave-form" [formGroup]="leaveForm" (ngSubmit)="submitForm()">
+        <h3>Leave Form</h3>
         <div>
             <p>Start date: {{ range.value.start | date:'dd/MMM/yyyy EEE' }}</p>
             <p>End date: {{ range.value.end | date: 'dd/MMM/yyyy EEE' }}</p>
