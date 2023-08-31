@@ -11,11 +11,12 @@ export const studentGuardsGuard: CanActivateFn | any = async () => {
   service.checkStudentData(role).subscribe(
     {
       next: (data: any) => {
-        console.log("return data ", data)
+
         if (data) {
           return true
-        } 
+        }
         else {
+          console.log("Inauthorised")
           router.navigate(['unathorised']);
           return false
         }

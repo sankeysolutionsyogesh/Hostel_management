@@ -42,6 +42,8 @@ export class AdminStudentFormsComponent {
         created_at: this.StudentDetails.created_at ? this.StudentDetails.created_at : new Date().toISOString(),
       };
 
+
+
       if (this.PageName === 'editpage') {
 
         try {

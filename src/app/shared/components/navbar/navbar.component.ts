@@ -8,7 +8,7 @@ import { LoginServicesService } from 'src/app/auth/servies/login-services.servic
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent{
- 
+
   @Input() pagesRoutes: any = [];
   @Input() titlename: string | undefined = "";
   @Input() role: string = "";
@@ -17,11 +17,11 @@ export class NavbarComponent{
   constructor(
     private loginService: LoginServicesService, private router: Router
   ) {
-    console.log("Pages", this.pagesRoutes)
-    console.log("Pages", this.role)
+    // console.log("Pages", this.pagesRoutes)
+    // console.log("Pages", this.role)
   }
 
- 
+
   logout() {
     this.loginService.logout()
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentmoduleService } from './services/studentmodule.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-student',
@@ -40,11 +40,9 @@ export class StudentComponent {
       .observe(['(min-width: 500px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
-          console.log('Viewport width is 500px or greater!');
           this.isDesktop = true
           this.isMobile = false
         } else {
-          console.log('Viewport width is less than 500px!');
           this.isMobile = true
           this.isDesktop = false
 

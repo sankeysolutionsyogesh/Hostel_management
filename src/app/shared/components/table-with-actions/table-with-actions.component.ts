@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class TableWithActionsComponent {
 
-  @Input() dataSource!: MatTableDataSource<any>;  
+  @Input() dataSource!: MatTableDataSource<any>;
   @Input() displayedColumns!: any[];
   @Input() actionButtons!: any[];
 
@@ -22,7 +22,10 @@ export class TableWithActionsComponent {
     console.log("Tables",  this.displayedColumns);
   }
 
- 
+  ngOnInit(){
+    console.log("onInit")
+  }
+
   ngOnChanges(): void {
     console.log('ngOnChanges');
     this.tablesToDisplay = this.displayedColumns.concat(['actions']);
@@ -30,6 +33,6 @@ export class TableWithActionsComponent {
     console.log("Tables", this.tablesToDisplay );
   }
 
- 
+
 
 }

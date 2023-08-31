@@ -4,6 +4,7 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UnauthorisedComponent } from './components/unauthorised/unauthorised.component';
+import {PagenotfoundComponent} from "./components/pagenotfound/pagenotfound.component";
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
       // { path: 'unathorised', component: UnauthorisedComponent },
 
     ]
-  }
+  },
 ];
 
 

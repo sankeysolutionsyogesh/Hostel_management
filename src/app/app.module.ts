@@ -51,33 +51,10 @@ import { AdminModule } from './admin/admin.module';
     AngularFireAuthModule,
     StudentModule,
     AdminModule,
-    LayoutModule
-    // AuthModule,
-    // BrowserAnimationsModule,
-    // AngularFireAuthModule,
-    // MatSlideToggleModule,
-    // MatButtonModule,
-    // MatCheckboxModule,
-    // MatDatepickerModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatSelectModule,
-    // MatTableModule,
-    // MatNativeDateModule,
-    // MatIconModule,
-    // MatSnackBarModule,
-    // MatDialogModule,
-    // NgIf,
-    // FormsModule,
-    // HttpClientModule,
-    // MatToolbarModule,
-    // ReactiveFormsModule,
-    // MatProgressBarModule,
-    // MatProgressSpinnerModule,
-    // CKEditorModule,
-    // MatCardModule,
-    // MatDividerModule,
-    // MatListModule
+    LayoutModule,
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

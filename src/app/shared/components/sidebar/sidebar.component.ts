@@ -9,7 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  
+
   @Input() pagesRoutes: any = [];
   @Input() titlename: string | undefined = "";
   @Input() role: string = "";
@@ -18,14 +18,14 @@ export class SidebarComponent {
   constructor(
     private loginService: LoginServicesService, private router: Router
   ) {
-    console.log("Pages", this.pagesRoutes)
-    console.log("Pages", this.role)
+    // console.log("Pages", this.pagesRoutes)
+    // console.log("Pages", this.role)
   }
   toggleSidebar() {
     // this.sidenav.toggle();
   }
 
- 
+
   logout() {
     this.loginService.logout()
   }

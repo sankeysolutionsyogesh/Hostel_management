@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { LoginServicesService } from '../../servies/login-services.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements  OnInit{
   loginError: boolean = false;
   loading: boolean = false;
   // constructor(private snackBar: MatSnackBar, private loginService: LoginDataService, private router: Router) { }
@@ -43,7 +43,7 @@ export class LoginComponent {
   ngOnInit(): void {
 
     const data = this.loginservices.getLoginInfo()
-    console.log("User deatils", data)
+    // console.log("User deatils", data)
     if (data?.role === 'admin') {
       this.router.navigate(['admin'])
     } else if (data?.role === 'student') {

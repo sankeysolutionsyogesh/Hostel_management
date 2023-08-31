@@ -10,8 +10,9 @@ const routes: Routes = [
     path: 'unathorised',
     component: UnauthorisedComponent
   },
+  // { path: "**", pathMatch: 'full', component: PagenotfoundComponent }
   // { path: 'student', redirectTo: 'auth', pathMatch: 'full' },
-  // { path: "**", pathMatch: 'prefix', component: PagenotfoundComponent } 
+
 ];
 
 @NgModule({

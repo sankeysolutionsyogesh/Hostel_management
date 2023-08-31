@@ -9,8 +9,8 @@ export class AdminStudentService {
 
   lastSid: number = 0;
 
-  
   constructor(private db: AngularFireDatabase) {
+    this.getlastdata()
   }
 
   getlastdata() {
@@ -22,6 +22,8 @@ export class AdminStudentService {
       if (data.length > 0) {
         const lastAddedStudent: any = data[0].payload.val();
         this.lastSid = lastAddedStudent.sid
+        console.log("Registered student", lastAddedStudent)
+
 
         // console.log('Last added student:', lastAddedStudent);
       }
@@ -65,7 +67,9 @@ export class AdminStudentService {
 
 
   registerStudent(data: any): Promise<void> {
+
     data.sid = this.lastSid + 1;
+    console.log("student data", data)
     const studentsRef = this.db.list('students-list');
     return new Promise<void>((resolve, reject) => {
       studentsRef.push(data)
@@ -103,7 +107,7 @@ export class AdminStudentService {
 
   }
 
-  
+
   getSingleLeaves(id: any) {
     const studentsRef = this.db.list('students-leave', ref =>
       ref.orderByChild('leaveId').equalTo(id)

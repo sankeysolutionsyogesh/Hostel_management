@@ -12,6 +12,9 @@ export class AdminComponent {
     { label: 'Home', link: './admin-home' },
     { label: 'Warden', link: './admin-warden' },
     { label: 'Student', link: './admin-student' },
+    { label: 'Announcements', link: './admin-add-announcements' },
+
+
   ];
   loading: boolean = true;
   role: string = "Auth"

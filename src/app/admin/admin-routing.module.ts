@@ -10,6 +10,9 @@ import { AStudentLeavesComponent } from './components/student-modal/a-student-le
 import { AStudentCompliantComponent } from './components/student-modal/a-student-compliant/a-student-compliant.component';
 import { AStudentListComponent } from './components/student-modal/a-student-list/a-student-list.component';
 import { ViewSingleLeaveComponent } from './components/student-modal/view-single-leave/view-single-leave.component';
+import {PagenotfoundComponent} from "../auth/components/pagenotfound/pagenotfound.component";
+import {AddAnnouncementComponent} from "./components/announcements/add-announcement/add-announcement.component";
+import {AnnouncementsComponent} from "./components/announcements/announcements.component";
 
 const routes: Routes = [
   {
@@ -17,6 +20,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'admin-home', pathMatch: 'full' },
       { path: 'admin-home', component: AdminHomepageComponent },
       { path: 'admin-warden', component: AdminWardenComponent },
+      { path: 'admin-add-announcements', component: AnnouncementsComponent },
       {
         path: 'admin-student', component: AdminStudentComponent, children: [
           { path: '', redirectTo: 'a-student-list', pathMatch: 'full' },
@@ -26,10 +30,10 @@ const routes: Routes = [
           { path: 'a-student-leaves/:id', component: ViewSingleLeaveComponent},
 
         ]
-      }
+      },
 
     ]
-  }
+  },
 ];
 
 

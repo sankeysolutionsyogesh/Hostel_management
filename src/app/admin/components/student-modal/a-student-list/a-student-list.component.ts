@@ -51,7 +51,7 @@ export class AStudentListComponent {
         verticalPosition: 'top',
       });
     }
-   
+
   }
 
   addStudent() {
@@ -75,12 +75,12 @@ export class AStudentListComponent {
     let EditProfile = {}
 
     if (InputData.gender === 'Male') {
-      EditProfile = {...InputData, gender : 'M'} 
+      EditProfile = {...InputData, gender : 'M'}
     } else if (InputData.gender === 'Female') {
-      EditProfile = {...InputData, gender : 'F'} 
+      EditProfile = {...InputData, gender : 'F'}
 
     } else {
-      EditProfile = {...InputData, gender : 'O'} 
+      EditProfile = {...InputData, gender : 'O'}
 
     }
     console.log("Diaplog input ", InputData)
@@ -102,7 +102,8 @@ export class AStudentListComponent {
   getStudentAction() {
     this.studentservice.GetStudentsList().subscribe(data => {
       // this.StudentList = data;
-      const showColumns = ['sid', 'student_name', 'gender', 'fees_paid', 'room_number',]
+      console.log("data", data)
+      const showColumns = ['sid','student_email', 'student_name', 'gender', 'fees_paid', 'room_number',]
       // console.log("data", data)
       // const keysArray = data.reduce((keys: string[], obj) => {
       //   Object.keys(obj).forEach((key) => {

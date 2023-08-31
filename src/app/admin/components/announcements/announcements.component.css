@@ -1,0 +1,43 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header,
+.footer {
+  padding: 10px;
+  /*background-color: lightgray;*/
+}
+
+.body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scrollable {
+  max-height: calc(100vh - 120px); /* Adjust as needed */
+  overflow-y: auto;
+}
+
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.button {
+  flex: 2;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.header{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+}

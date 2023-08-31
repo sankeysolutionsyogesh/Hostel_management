@@ -6,6 +6,7 @@ import { StduentHomeComponent } from './components/stduent-home/stduent-home.com
 import { MyLeavesComponent } from './components/my-leaves/my-leaves.component';
 import { ApplyLeavesComponent } from './components/apply-leaves/apply-leaves.component';
 import { ApplyComplaintComponent } from './components/apply-complaint/apply-complaint.component';
+import {PagenotfoundComponent} from "../auth/components/pagenotfound/pagenotfound.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
       { path: 'student-apply-complaint', component: ApplyComplaintComponent },
       { path: 'student-apply-leaves', component: ApplyLeavesComponent },
     ]
-  }
+  },
 ];
 
 
